@@ -1,17 +1,18 @@
 
-%define		_snap	031105
+%define 	_ver	0.95
+%define		_snap	031114
 
 Summary:	A tag library
 Summary(pl):	Biblioteka tag
 Name:		taglib
-Version:	0.95.%{_snap}
+Version:	%{_ver}.%{_snap}
 Release:	1
 License:	GPL
 Group:		X11/Libraries
 # From kdeextragear-2 kde cvs module
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	81cb7cdb95ed16b1045772dc05a34623
-BuildRequires:	kdelibs-devel >= 9:3.1.93
+# Source0-md5:	cfe975747466336d1bf119cb91761bd3
+BuildRequires:	kdelibs-devel >= 9:3.1.93.%{_snap}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
