@@ -11,8 +11,9 @@ Patch0:		%{name}-libtool-sanitize.patch
 URL:		http://ktown.kde.org/~wheeler/taglib.html
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
-#BuildRequires:	unsermake >= 040805-1
 BuildRequires:	libstdc++-devel
+BuildRequires:	perl-base
+#BuildRequires:	unsermake >= 040805-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
