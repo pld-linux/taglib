@@ -11,7 +11,7 @@ License:	GPL
 Group:		X11/Libraries
 # (temporary?) (pre-)release URL: http://ktown.kde.org/~wheeler/taglib/%{name}-%{version}.tar.gz
 # From kdeextragear-2 kde cvs module
-Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	b95a5c0a17b0ec058689fb64e0507a0d
 URL:		http://ktown.kde.org/~wheeler/taglib/
 BuildRequires:	autoconf
