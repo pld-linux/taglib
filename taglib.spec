@@ -21,7 +21,7 @@ A tag library needed for juk application which is part of
 kdemultimedia package.
 
 %description -l pl
-Biblioteka tag wykorzystywana przez program juk, bed±cy czê¶ci±
+Biblioteka tag wykorzystywana przez program juk, bêd±cy czê¶ci±
 pakietu kdemultimedia.
 
 %package devel
