@@ -1,12 +1,12 @@
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
 Name:		taglib
-Version:	1.0
+Version:	1.1
 Release:	1
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://ktown.kde.org/~wheeler/taglib/%{name}-%{version}.tar.gz
-# Source0-md5:	9595e2cf3e12de96afbe81ae7f4cad33
+Source0:	http://developer.kde.org/%7Ewheeler/files/src/%{name}-%{version}.tar.gz
+# Source0-md5:	a805368c41d22393cf23ca0f741adc57
 Patch0:		%{name}-libtool-sanitize.patch
 Patch1:		%{name}-am18.patch
 URL:		http://ktown.kde.org/~wheeler/taglib/
