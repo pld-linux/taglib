@@ -1,6 +1,6 @@
 
-%define 	_ver	0.95
-%define		_snap	031114
+%define 	_ver	0.96
+%define		_snap	031204
 
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
@@ -12,7 +12,7 @@ Group:		X11/Libraries
 # (temporary?) (pre-)release URL: http://ktown.kde.org/~wheeler/taglib/%{name}-%{version}.tar.gz
 # From kdeextragear-2 kde cvs module
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	cfe975747466336d1bf119cb91761bd3
+# Source0-md5:	b95a5c0a17b0ec058689fb64e0507a0d
 URL:		http://ktown.kde.org/~wheeler/taglib/
 BuildRequires:	kdelibs-devel >= 9:3.1.93.%{_snap}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
