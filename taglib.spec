@@ -6,7 +6,7 @@ Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
 Name:		taglib
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Libraries
 # (temporary?) (pre-)release URL: http://ktown.kde.org/~wheeler/taglib/%{name}-%{version}.tar.gz
@@ -14,6 +14,8 @@ Group:		X11/Libraries
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	b95a5c0a17b0ec058689fb64e0507a0d
 URL:		http://ktown.kde.org/~wheeler/taglib/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.1.93.%{_snap}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,10 +44,15 @@ Biblioteka tag - pliki nag³ówkowe.
 
 %build
 %{__make} -f admin/Makefile.common cvs
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 
 %configure \
 	--disable-rpath \
-	--enable-final
+	--enable-final \
+	--with-qt-libraries=%{_libdir}
 
 %{__make}
 
