@@ -1,18 +1,18 @@
 
 %define 	_ver	0.96
-%define		_snap	031204
+%define		_snap	040110
 
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
 Name:		taglib
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	1
 License:	GPL
 Group:		X11/Libraries
 # (temporary?) (pre-)release URL: http://ktown.kde.org/~wheeler/taglib/%{name}-%{version}.tar.gz
 # From kdeextragear-2 kde cvs module
 Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	b95a5c0a17b0ec058689fb64e0507a0d
+# Source0-md5:	54facb5fd0a6a5c604b67fafef44bc9c
 URL:		http://ktown.kde.org/~wheeler/taglib/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,11 +43,8 @@ Biblioteka tag - pliki nag³ówkowe.
 %setup -q -n %{name}-%{_snap}
 
 %build
+cp /usr/share/automake/config.sub admin
 %{__make} -f admin/Makefile.common cvs
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
 
 %configure \
 	--disable-rpath \
