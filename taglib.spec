@@ -1,17 +1,18 @@
+%define		_snap	040811
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
 Name:		taglib
-Version:	1.1
-Release:	1
+Version:	1.3
+Release:	0.%{_snap}.1
 License:	GPL
 Group:		X11/Libraries
-Source0:	http://developer.kde.org/%7Ewheeler/files/src/%{name}-%{version}.tar.gz
-# Source0-md5:	a805368c41d22393cf23ca0f741adc57
+Source0:	%{name}-%{_snap}.tar.bz2
+# Source0-md5:	52afc2b5a223980b6128b6908a86e01b
 Patch0:		%{name}-libtool-sanitize.patch
-Patch1:		%{name}-am18.patch
 URL:		http://ktown.kde.org/~wheeler/taglib/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
+BuildRequires:	unsermake >= 040805-1
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,12 +38,12 @@ Header files for tag library.
 Pliki nag³ówkowe biblioteki tag.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
-%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.* admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
@@ -67,13 +68,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libtag.so.*.*.*
-%attr(755,root,root) %{_libdir}/libtag_c.so.*.*.*
+
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/taglib-config
-%attr(755,root,root) %{_libdir}/libtag.so
-%attr(755,root,root) %{_libdir}/libtag_c.so
 %{_libdir}/libtag.la
-%{_libdir}/libtag_c.la
 %{_includedir}/taglib
