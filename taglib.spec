@@ -12,8 +12,7 @@ Patch1:		%{name}-am18.patch
 URL:		http://ktown.kde.org/~wheeler/taglib/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
-# is it needed? taglib links with libstdc++ only
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
