@@ -1,0 +1,3 @@
+- updated to snap of 1.3 (1.2 was tottaly forgotten in pld), it adds:
+  + support for 8bit encoding of tags
+  + mpc/flac/more format id tags
