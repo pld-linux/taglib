@@ -2,7 +2,7 @@ Summary:	A tag library for reading and editing audio meta data
 Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
 Name:		taglib
 Version:	1.4
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Libraries
 Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
 Patch0:		%{name}-libtool-sanitize.patch
 Patch1:		kde-ac260.patch
 Patch2:		kde-am.patch
+Patch3:		kde-ac260-lt.patch
 URL:		http://ktown.kde.org/~wheeler/taglib.html
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -44,6 +45,7 @@ Pliki nag³ówkowe biblioteki tag.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 cp -f /usr/share/automake/config.* admin
