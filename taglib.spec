@@ -1,5 +1,5 @@
 Summary:	A tag library for reading and editing audio meta data
-Summary(pl):	Biblioteka tag do odczytu i edycji metadanych dotycz±cych d¼wiêku
+Summary(pl.UTF-8):   Biblioteka tag do odczytu i edycji metadanych dotyczÄ…cych dÅºwiÄ™ku
 Name:		taglib
 Version:	1.4
 Release:	3
@@ -23,13 +23,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 A tag library needed for juk application which is part of
 kdemultimedia package.
 
-%description -l pl
-Biblioteka tag wykorzystywana przez program juk, bêd±cy czê¶ci±
+%description -l pl.UTF-8
+Biblioteka tag wykorzystywana przez program juk, bÄ™dÄ…cy czÄ™Å›ciÄ…
 pakietu kdemultimedia.
 
 %package devel
 Summary:	libtag - header files
-Summary(pl):	libtag - pliki nag³ówkowe
+Summary(pl.UTF-8):   libtag - pliki nagÅ‚Ã³wkowe
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -37,8 +37,8 @@ Requires:	libstdc++-devel
 %description devel
 Header files for tag library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki tag.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki tag.
 
 %prep
 %setup -q
