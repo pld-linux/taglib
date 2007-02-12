@@ -1,5 +1,5 @@
 Summary:	A tag library for reading and editing audio meta data
-Summary(pl.UTF-8):   Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
+Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
 Version:	1.4
 Release:	3
@@ -29,7 +29,7 @@ pakietu kdemultimedia.
 
 %package devel
 Summary:	libtag - header files
-Summary(pl.UTF-8):   libtag - pliki nagłówkowe
+Summary(pl.UTF-8):	libtag - pliki nagłówkowe
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
