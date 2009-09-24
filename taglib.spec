@@ -11,8 +11,7 @@ Patch0:		%{name}-libtool-sanitize.patch
 Patch1:		kde-ac260-lt.patch
 Patch2:		taglib-am.patch
 URL:		http://ktown.kde.org/~wheeler/taglib.html
-BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake >= 1.6
+BuildRequires:	cmake >= 2.6.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -41,26 +40,25 @@ Pliki nagłówkowe biblioteki tag.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-cp -f /usr/share/automake/config.* admin
-%{__make} -f admin/Makefile.common cvs
-
-%configure \
-	--disable-rpath \
-	--enable-final \
-	--enable-asf \
-	--with-qt-libraries=%{_libdir}
-
+install -d build
+cd build
+%cmake \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
+	-DWITH_ASF=ON \
+	-DWITH_MP4=ON \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64 \
+%endif
+	../
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -81,8 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/taglib-config
 %{_libdir}/libtag.so
 %{_libdir}/libtag_c.so
-%{_libdir}/libtag.la
-%{_libdir}/libtag_c.la
 %{_pkgconfigdir}/taglib.pc
 %{_pkgconfigdir}/taglib_c.pc
 %{_includedir}/taglib
