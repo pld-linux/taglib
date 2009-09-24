@@ -1,0 +1,13 @@
+diff -ur taglib-1.6/admin/cvs.sh taglib-1.6.new/admin/cvs.sh
+--- taglib-1.6/admin/cvs.sh	2008-08-19 21:56:25.000000000 +0200
++++ taglib-1.6.new/admin/cvs.sh	2009-09-24 11:10:53.064811129 +0200
+@@ -68,7 +68,7 @@
+     echo "*** KDE requires automake $required_automake_version"
+     exit 1
+     ;;
+-  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10*)
++  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10* | automake*1.11*)
+     echo "*** $AUTOMAKE_STRING found."
+     UNSERMAKE=no
+     ;;
+Tylko w taglib-1.6.new/admin: cvs.sh~
