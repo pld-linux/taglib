@@ -9,6 +9,7 @@ Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
 # Source0-md5:	5ecad0816e586a954bd676a86237d054
 Patch0:		%{name}-libtool-sanitize.patch
 Patch1:		kde-ac260-lt.patch
+Patch2:		taglib-am.patch
 URL:		http://ktown.kde.org/~wheeler/taglib.html
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -42,6 +43,7 @@ Pliki nagłówkowe biblioteki tag.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 cp -f /usr/share/automake/config.* admin
@@ -50,6 +52,7 @@ cp -f /usr/share/automake/config.* admin
 %configure \
 	--disable-rpath \
 	--enable-final \
+	--enable-asf \
 	--with-qt-libraries=%{_libdir}
 
 %{__make}
