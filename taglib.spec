@@ -1,9 +1,12 @@
+# TODO:
+# - dangling patches
+# - optflags (CMAKE_BUILD_TYPE=Release overrides them)
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
 Version:	1.6
 Release:	0.5
-License:	GPL
+License:	LGPL v2.1 or MPL v1.1
 Group:		X11/Libraries
 Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
 # Source0-md5:	5ecad0816e586a954bd676a86237d054
@@ -44,16 +47,17 @@ Pliki nagłówkowe biblioteki tag.
 %build
 install -d build
 cd build
-%cmake \
+%cmake .. \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DLIB_INSTALL_DIR=%{_libdir} \
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
-	-DWITH_ASF=ON \
-	-DWITH_MP4=ON \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
-	../
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
+	-DWITH_ASF=ON \
+	-DWITH_MP4=ON
+
 %{__make}
 
 %install
