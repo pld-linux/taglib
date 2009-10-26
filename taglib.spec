@@ -54,6 +54,7 @@ cd build
 	-DLIB_SUFFIX=64 \
 %endif
 	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
+	-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DWITH_ASF=ON \
 	-DWITH_MP4=ON
