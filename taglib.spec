@@ -5,14 +5,14 @@ Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
 Version:	1.6.3
-Release:	1
+Release:	2
 License:	LGPL v2.1 or MPL v1.1
 Group:		X11/Libraries
 Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
 # Source0-md5:	ddf02f4e1d2dc30f76734df806e613eb
 Patch0:		%{name}-libtool-sanitize.patch
 Patch1:		kde-ac260-lt.patch
-Patch2:		taglib-am.patch
+Patch2:		%{name}-am.patch
 URL:		http://ktown.kde.org/~wheeler/taglib.html
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	libstdc++-devel
@@ -41,6 +41,17 @@ Header files for tag library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki tag.
 
+%package examples
+Summary:	Example codes
+Summary(hu.UTF-8):	Példaprogramok
+Group:		X11/Development/Libraries
+
+%description examples
+Example codes.
+
+%description examples -l hu.UTF-8
+Példaprogramok.
+
 %prep
 %setup -q
 
@@ -67,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -r examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -88,3 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/taglib.pc
 %{_pkgconfigdir}/taglib_c.pc
 %{_includedir}/taglib
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
