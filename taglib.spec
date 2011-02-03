@@ -7,7 +7,7 @@ Name:		taglib
 Version:	1.6.3
 Release:	2
 License:	LGPL v2.1 or MPL v1.1
-Group:		X11/Libraries
+Group:		Libraries
 Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
 # Source0-md5:	ddf02f4e1d2dc30f76734df806e613eb
 Patch0:		%{name}-libtool-sanitize.patch
@@ -31,7 +31,7 @@ pakietu kdemultimedia.
 %package devel
 Summary:	libtag - header files
 Summary(pl.UTF-8):	libtag - pliki nagłówkowe
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 
@@ -42,15 +42,19 @@ Header files for tag library.
 Pliki nagłówkowe biblioteki tag.
 
 %package examples
-Summary:	Example codes
+Summary:	Example codes for taglib
 Summary(hu.UTF-8):	Példaprogramok
-Group:		X11/Development/Libraries
+Summary(pl.UTF-8):	Przykładowe programy w postaci źródłowej dla tagliba
+Group:		Development/Libraries
 
 %description examples
-Example codes.
+Example codes for taglib.
 
 %description examples -l hu.UTF-8
 Példaprogramok.
+
+%description examples -l pl.UTF-8
+Przykładowe programy w postaci źródłowej dla tagliba.
 
 %prep
 %setup -q
@@ -90,9 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libtag.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtag.so.?
+%attr(755,root,root) %ghost %{_libdir}/libtag.so.1
 %attr(755,root,root) %{_libdir}/libtag_c.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtag_c.so.?
+%attr(755,root,root) %ghost %{_libdir}/libtag_c.so.0
 
 %files devel
 %defattr(644,root,root,755)
