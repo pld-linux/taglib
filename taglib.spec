@@ -16,12 +16,17 @@ BuildRequires:	rpmbuild(macros) >= 1.577
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-A tag library needed for juk application which is part of
-kdemultimedia package.
+TagLib is a library for reading and editing the meta-data of several
+popular audio formats. Currently it supports both ID3v1 and ID3v2 for
+MP3 files, Ogg Vorbis comments and ID3 tags and Vorbis comments in
+FLAC, MPC, Speex, WavPack TrueAudio, WAV, AIFF, MP4 and ASF files.
 
 %description -l pl.UTF-8
-Biblioteka tag wykorzystywana przez program juk, będący częścią
-pakietu kdemultimedia.
+TagLib to biblioteka do odczytu i edycji metadanych kilku popularnych
+formatów dźwiękowych. Aktualnie obsługiwane są znaczniki ID3v1 i ID3v2
+w plikach MP3, komentarze Ogg Vorbis oraz znaczniki ID3 i komentarze
+Vorbis w plikach FLAC, MPC, Speex, WavPack TrueAudio, WAV, AIFF, MP4 i
+ASF.
 
 %package devel
 Summary:	libtag - header files
