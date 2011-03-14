@@ -1,23 +1,18 @@
-# TODO:
-# - dangling patches
-# - optflags (CMAKE_BUILD_TYPE=Release overrides them)
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
-Version:	1.6.3
-Release:	2
+Version:	1.7
+Release:	1
 License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
 Source0:	http://ktown.kde.org/~wheeler/files/src/%{name}-%{version}.tar.gz
-# Source0-md5:	ddf02f4e1d2dc30f76734df806e613eb
-Patch0:		%{name}-libtool-sanitize.patch
-Patch1:		kde-ac260-lt.patch
-Patch2:		%{name}-am.patch
+# Source0-md5:	6a7e312668f153fa905a81714aebc257
 URL:		http://ktown.kde.org/~wheeler/taglib.html
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.577
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,14 +58,7 @@ Przykładowe programy w postaci źródłowej dla tagliba.
 install -d build
 cd build
 %cmake .. \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DLIB_INSTALL_DIR=%{_libdir} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64 \
-%endif
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
 	-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DWITH_ASF=ON \
 	-DWITH_MP4=ON
 
