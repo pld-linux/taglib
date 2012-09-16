@@ -7,12 +7,12 @@ License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
 Source0:	https://github.com/downloads/taglib/taglib/%{name}-%{version}.tar.gz
 # Source0-md5:	dcb8bd1b756f2843e18b1fdf3aaeee15
-URL:		http://taglib.github.com
+URL:		http://taglib.github.com/
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.577
+BuildRequires:	rpmbuild(macros) >= 1.603
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,7 +63,6 @@ Przykładowe programy w postaci źródłowej dla tagliba.
 install -d build
 cd build
 %cmake .. \
-	-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 	-DWITH_ASF=ON \
 	-DWITH_MP4=ON
 
@@ -86,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/libtag.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libtag.so.1
 %attr(755,root,root) %{_libdir}/libtag_c.so.*.*.*
@@ -94,8 +94,8 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/taglib-config
-%{_libdir}/libtag.so
-%{_libdir}/libtag_c.so
+%attr(755,root,root) %{_libdir}/libtag.so
+%attr(755,root,root) %{_libdir}/libtag_c.so
 %{_pkgconfigdir}/taglib.pc
 %{_pkgconfigdir}/taglib_c.pc
 %{_includedir}/taglib
