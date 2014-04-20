@@ -5,7 +5,7 @@ Version:	1.9.1
 Release:	1
 License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
-Source0:	https://github.com/taglib/taglib/releases/download/v1.9.1/taglib-1.9.1.tar.gz
+Source0:	https://github.com/taglib/taglib/releases/download/v%{version}/taglib-%{version}.tar.gz
 # Source0-md5:	0d35df96822bbd564c5504cb3c2e4d86
 URL:		http://taglib.github.com/
 BuildRequires:	cmake >= 2.6.2
