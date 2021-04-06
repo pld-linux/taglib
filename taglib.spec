@@ -1,19 +1,20 @@
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
-Version:	1.11.1
+Version:	1.12
 Release:	1
 License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
 #Source0Download: http://taglib.github.io/
-Source0:	http://taglib.github.io/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	cee7be0ccfc892fa433d6c837df9522a
+Source0:	https://taglib.github.io/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	4313ed2671234e029b7af8f97c84e9af
 URL:		http://taglib.github.io/
-BuildRequires:	cmake >= 2.8.0
+BuildRequires:	cmake >= 3.0.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.605
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,6 +36,7 @@ Summary(pl.UTF-8):	libtag - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
+Requires:	zlib-devel
 
 %description devel
 Header files for tag library.
