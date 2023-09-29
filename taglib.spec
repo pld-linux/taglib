@@ -14,6 +14,7 @@ BuildRequires:	cmake >= 3.0.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -50,6 +51,7 @@ Summary:	Example codes for taglib
 Summary(hu.UTF-8):	Példaprogramok
 Summary(pl.UTF-8):	Przykładowe programy w postaci źródłowej dla tagliba
 Group:		Development/Libraries
+BuildArch:	noarch
 
 %description examples
 Example codes for taglib.
