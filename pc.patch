@@ -1,0 +1,90 @@
+From a27ce770db14fcc4dcb971f2122b9ede64c6298d Mon Sep 17 00:00:00 2001
+From: Jan Palus <jpalus@fastmail.com>
+Date: Fri, 29 Sep 2023 21:36:12 +0200
+Subject: [PATCH] cmake: support both relative and absolute paths for pc files
+
+cmake supports both absolute and relative to prefix install dirs. #1071
+effectively mandated relative paths only. check if install dir is
+relative or absolute and either include ${prefix} in pc file or not
+
+Fixes #1098
+---
+ CMakeLists.txt               | 10 ++++++++++
+ bindings/c/CMakeLists.txt    | 10 ++++++++++
+ bindings/c/taglib_c.pc.cmake |  4 ++--
+ taglib.pc.cmake              |  4 ++--
+ 4 files changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2393290..e330b690 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,6 +119,16 @@ if(WIN32)
+ endif()
+ 
+ if(NOT BUILD_FRAMEWORK)
++  if (IS_ABSOLUTE ${CMAKE_INSTALL_INCLUDEDIR})
++    set(CMAKE_PC_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR})
++  else()
++    set(CMAKE_PC_INCLUDEDIR "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
++  endif()
++  if (IS_ABSOLUTE ${CMAKE_INSTALL_LIBDIR})
++    set(CMAKE_PC_LIBDIR ${CMAKE_INSTALL_LIBDIR})
++  else()
++    set(CMAKE_PC_LIBDIR "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
++  endif()
+   configure_file("${CMAKE_CURRENT_SOURCE_DIR}/taglib.pc.cmake" "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" @ONLY)
+   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/taglib.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+ endif()
+diff --git a/bindings/c/CMakeLists.txt b/bindings/c/CMakeLists.txt
+index d947aa4a..b24c9dca 100644
+--- a/bindings/c/CMakeLists.txt
++++ b/bindings/c/CMakeLists.txt
+@@ -69,6 +69,16 @@ install(TARGETS tag_c
+ )
+ 
+ if(NOT BUILD_FRAMEWORK)
++	if (IS_ABSOLUTE ${CMAKE_INSTALL_INCLUDEDIR})
++		set(CMAKE_PC_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR})
++	else()
++		set(CMAKE_PC_INCLUDEDIR "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
++	endif()
++	if (IS_ABSOLUTE ${CMAKE_INSTALL_LIBDIR})
++		set(CMAKE_PC_LIBDIR ${CMAKE_INSTALL_LIBDIR})
++	else()
++		set(CMAKE_PC_LIBDIR "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
++	endif()
+ 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/taglib_c.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/taglib_c.pc @ONLY)
+ 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/taglib_c.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+diff --git a/bindings/c/taglib_c.pc.cmake b/bindings/c/taglib_c.pc.cmake
+index 178f1e50..b3b4b2ac 100644
+--- a/bindings/c/taglib_c.pc.cmake
++++ b/bindings/c/taglib_c.pc.cmake
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=@CMAKE_PC_LIBDIR@
++includedir=@CMAKE_PC_INCLUDEDIR@
+ 
+ Name: TagLib C Bindings
+ Description: Audio meta-data library (C bindings)
+diff --git a/taglib.pc.cmake b/taglib.pc.cmake
+index 3800f078..1f1c9fdb 100644
+--- a/taglib.pc.cmake
++++ b/taglib.pc.cmake
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=@CMAKE_PC_LIBDIR@
++includedir=@CMAKE_PC_INCLUDEDIR@
+ 
+ Name: TagLib
+ Description: Audio meta-data library
+-- 
+2.42.0
+
