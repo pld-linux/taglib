@@ -1,21 +1,21 @@
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
-Version:	1.13.1
-Release:	2
+Version:	2.0.1
+Release:	1
 License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
 #Source0Download: http://taglib.org/
 Source0:	https://taglib.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	2fe6089da73ad414aa1b982b83415362
-Patch0:		pc.patch
+# Source0-md5:	e1f2ef858bddf65eb17e43043c3da10b
 URL:		https://taglib.org/
-BuildRequires:	cmake >= 3.0.0
-BuildRequires:	libstdc++-devel
+BuildRequires:	cmake >= 3.5.0
+BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.605
+BuildRequires:	utf8cpp-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,7 +37,7 @@ Summary:	libtag - header files
 Summary(pl.UTF-8):	libtag - pliki nagłówkowe
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libstdc++-devel
+Requires:	libstdc++-devel >= 6:7
 Requires:	zlib-devel
 
 %description devel
@@ -64,7 +64,6 @@ Przykładowe programy w postaci źródłowej dla tagliba.
 
 %prep
 %setup -q
-%patch -P0 -p1
 
 %build
 install -d build
@@ -92,20 +91,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS
+%doc AUTHORS CHANGELOG.md README.md
 %attr(755,root,root) %{_libdir}/libtag.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtag.so.1
+%attr(755,root,root) %ghost %{_libdir}/libtag.so.2
 %attr(755,root,root) %{_libdir}/libtag_c.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtag_c.so.0
+%attr(755,root,root) %ghost %{_libdir}/libtag_c.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/taglib-config
 %attr(755,root,root) %{_libdir}/libtag.so
 %attr(755,root,root) %{_libdir}/libtag_c.so
+%{_includedir}/taglib
+%{_libdir}/cmake/taglib
 %{_pkgconfigdir}/taglib.pc
 %{_pkgconfigdir}/taglib_c.pc
-%{_includedir}/taglib
 
 %files examples
 %defattr(644,root,root,755)
