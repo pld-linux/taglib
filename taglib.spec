@@ -1,13 +1,13 @@
 Summary:	A tag library for reading and editing audio meta data
 Summary(pl.UTF-8):	Biblioteka tag do odczytu i edycji metadanych dotyczących dźwięku
 Name:		taglib
-Version:	2.0.2
+Version:	2.1.1
 Release:	1
 License:	LGPL v2.1 or MPL v1.1
 Group:		Libraries
-#Source0Download: http://taglib.org/
+#Source0Download: https://taglib.org/
 Source0:	https://taglib.org/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	95edea13107ac4cc07b7ad4bd1cb5cd1
+# Source0-md5:	9feffe76b4643eb724185310879c3123
 URL:		https://taglib.org/
 BuildRequires:	cmake >= 3.5.0
 BuildRequires:	libstdc++-devel >= 6:7
